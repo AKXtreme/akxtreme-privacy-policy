@@ -16,7 +16,7 @@ AKxtreme is a privacy-focused mobile application that provides:
 
 You can view the privacy policy here:
 
-👉 https://yourusername.github.io/akxtreme-privacy-policy/
+👉 https://github.com/AKXtreme/akxtreme-privacy-policy/)
 
 ## Data & Privacy
 
