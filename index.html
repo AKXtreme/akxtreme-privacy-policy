@@ -1,76 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AKxtreme Privacy Policy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKXtreme – Privacy Policy</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0a1628;
+      color: #cfd8dc;
+      line-height: 1.7;
+      padding: 32px 16px 64px;
     }
-    h1, h2 {
-      color: #111;
+    .container { max-width: 720px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 40px; }
+    header .app-name { color: #29b6f6; font-size: 15px; font-weight: 600; }
+    header h1 { color: #ffffff; font-size: 28px; font-weight: 700; margin: 6px 0; }
+    header .updated { color: #546e7a; font-size: 13px; margin-top: 8px; }
+    section { margin-bottom: 24px; }
+    section h2 {
+      color: #29b6f6;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
     }
-    ul {
-      margin-left: 20px;
+    .card {
+      background: #0d1f3c;
+      border-radius: 12px;
+      padding: 18px 20px;
+      font-size: 14px;
     }
+    .card p + p { margin-top: 10px; }
+    ul { padding-left: 18px; margin-top: 8px; }
+    li { margin-bottom: 8px; font-size: 14px; }
+    strong { color: #eceff1; }
+    .no { color: #ef9a9a; font-weight: 600; }
+    footer { text-align: center; color: #37474f; font-size: 12px; margin-top: 48px; }
+    a { color: #29b6f6; }
   </style>
 </head>
 <body>
+<div class="container">
 
-  <h1>AKxtreme Privacy Policy</h1>
-  <p><strong>Last updated:</strong> March 2026</p>
+  <header>
+    <div class="app-name">AKXtreme</div>
+    <h1>Privacy Policy</h1>
+    <div class="updated">Last updated: March 2025</div>
+  </header>
 
-  <p>
-    AKxtreme – App Lock & Vault is a mobile application designed to protect user privacy by providing app locking and secure private vault features.
-  </p>
+  <section>
+    <h2>Overview</h2>
+    <div class="card">
+      <p>AKXtreme is a local privacy and security application. All data — including your PIN, patterns, encrypted files, and app lock settings — is stored exclusively on your device. Nothing is transmitted to any server, third party, or cloud service.</p>
+    </div>
+  </section>
 
-  <h2>Information Collection and Use</h2>
-  <p>
-    AKxtreme does NOT collect, store, or share any personal data. All data processed by the app remains on the user's device.
-  </p>
+  <section>
+    <h2>Data We Collect</h2>
+    <div class="card">
+      <p>AKXtreme does <strong>not</strong> collect any personal data. The following is stored locally on your device only:</p>
+      <ul>
+        <li>Your PIN or pattern (stored as a one-way cryptographic hash — cannot be reversed)</li>
+        <li>List of apps you choose to lock</li>
+        <li>Files you import into the vault (encrypted with AES-256-GCM using your PIN)</li>
+        <li>Intruder photos captured when enabled (stored only on your device)</li>
+        <li>App preferences and settings</li>
+      </ul>
+      <p style="margin-top:12px;"><strong>None of this data ever leaves your device.</strong></p>
+    </div>
+  </section>
 
-  <h2>Permissions Used</h2>
-  <ul>
-    <li><strong>Accessibility Service:</strong> Used to detect when selected apps are opened in order to apply app lock protection. This service is used strictly for locking functionality and does not collect or share any personal data.</li>
-    
-    <li><strong>Storage Access:</strong> Used to securely store and manage private photos and videos within the vault. Files are stored locally on the device.</li>
-    
-    <li><strong>Overlay Permission (Display over other apps):</strong> Required to display the lock screen over protected applications.</li>
-    
-    <li><strong>Vibration Permission:</strong> Used to provide haptic feedback during PIN or pattern input.</li>
-  </ul>
+  <section>
+    <h2>Permissions &amp; Why We Use Them</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Accessibility Service</strong> — Detects when a locked app opens so the lock screen can be shown. Does <span class="no">NOT</span> read screen content, keystrokes, or any data inside other apps.</li>
+        <li><strong>Usage Access (PACKAGE_USAGE_STATS)</strong> — Identifies the foreground app as a secondary detection method. No usage data is stored or transmitted.</li>
+        <li><strong>Draw Over Other Apps (SYSTEM_ALERT_WINDOW)</strong> — Displays the lock screen overlay on top of locked apps.</li>
+        <li><strong>Camera</strong> — Captures a photo when the wrong password is entered (Intruder Detection). Only used when explicitly enabled by you. Photos are stored locally.</li>
+        <li><strong>Device Admin</strong> — Prevents the app from being uninstalled without your password. Optional feature.</li>
+        <li><strong>Storage (READ_MEDIA_IMAGES, READ_MEDIA_VIDEO)</strong> — Allows you to select files to import into the encrypted vault.</li>
+        <li><strong>Notifications</strong> — Shows a silent background notification required by Android to keep the protection service running.</li>
+        <li><strong>Vibration</strong> — Haptic feedback during PIN or pattern input.</li>
+      </ul>
+    </div>
+  </section>
 
-  <h2>Data Security</h2>
-  <p>
-    All files stored in the vault are encrypted and stored locally on the device. The app does not transmit any data to external servers.
-  </p>
+  <section>
+    <h2>Encryption</h2>
+    <div class="card">
+      <p>Files stored in the vault are encrypted using <strong>AES-256-GCM</strong> with keys derived from your PIN via <strong>PBKDF2WithHmacSHA256</strong> (100,000 iterations). Your PIN is never stored — only a cryptographic hash is saved for verification. Encrypted files cannot be recovered without the correct PIN.</p>
+    </div>
+  </section>
 
-  <h2>User Control</h2>
-  <p>
-    Users have full control over their files. Files can be imported into the vault and can also be restored back to device storage at any time.
-  </p>
+  <section>
+    <h2>Data Sharing</h2>
+    <div class="card">
+      <p>AKXtreme does <strong>not</strong> share any data with third parties. There are no analytics SDKs, advertising SDKs, or crash reporting tools included in this app. No internet permission is requested or used.</p>
+    </div>
+  </section>
 
-  <h2>Third-Party Services</h2>
-  <p>
-    This app does not use third-party services that collect personal data.
-  </p>
+  <section>
+    <h2>Data Retention &amp; Deletion</h2>
+    <div class="card">
+      <p>All data is stored on your device and under your control. You can:</p>
+      <ul>
+        <li>Delete individual vault files at any time from within the app</li>
+        <li>Clear all app data via Android Settings → Apps → AKXtreme → Clear Data</li>
+        <li>Uninstalling the app removes all stored data from your device</li>
+      </ul>
+    </div>
+  </section>
 
-  <h2>Changes to This Privacy Policy</h2>
-  <p>
-    This Privacy Policy may be updated from time to time. Users are advised to review this page periodically for any changes.
-  </p>
+  <section>
+    <h2>Children's Privacy</h2>
+    <div class="card">
+      <p>AKXtreme does not knowingly collect data from children under 13. The app does not contain advertising, social features, or external communications of any kind.</p>
+    </div>
+  </section>
 
-  <h2>Contact Us</h2>
-  <p>
-    If you have any questions or suggestions about this Privacy Policy, please contact:
-  </p>
-  <p><strong>Email:</strong>akalewoldak@gmail.com</p>
+  <section>
+    <h2>Changes to This Policy</h2>
+    <div class="card">
+      <p>If this privacy policy changes in a future app update, the updated policy will be available at this URL and the "Last updated" date will be revised.</p>
+    </div>
+  </section>
 
+  <section>
+    <h2>Contact</h2>
+    <div class="card">
+      <p>For questions about this privacy policy, contact the developer at <a href="mailto:akalewoldak@gmail.com">akalewoldak@gmail.com</a> or through the app's Play Store listing.</p>
+    </div>
+  </section>
+
+  <footer>© 2025 AKXtreme. All rights reserved.</footer>
+
+</div>
 </body>
 </html>
